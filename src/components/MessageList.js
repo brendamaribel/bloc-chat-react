@@ -37,6 +37,7 @@ class MessageList extends Component {
                        <p><b>{message.username} :</b> {message.content}  <b>{message.sentAt}</b></p>
                    </div>
           )}
+          
           </div>
 
         </section>
