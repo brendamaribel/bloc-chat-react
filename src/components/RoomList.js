@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 
 class RoomList extends Component {
+
   constructor(props) {
     super(props);
 
@@ -15,56 +16,93 @@ class RoomList extends Component {
     this.roomsRef = this.props.firebase.database().ref('rooms')
   }
 
+
   componentDidMount() {
+
     this.roomsRef.on('child_added', snapshot => {
+
       const room = snapshot.val();
       room.key = snapshot.key;
       this.setState({ rooms: this.state.rooms.concat( room ) });
+
     });
   }
+
+
 
   handleChange(e) {
     this.setState({ newRoomName: e.target.value })
   }
 
+
   handleSubmit(e) {
+
     e.preventDefault();
     if (!this.state.newRoomName) return
     this.roomsRef.push({ name: this.state.newRoomName })
     this.setState({ newRoomName: ''})
+
   }
 
 
-
   render() {
+
       return (
-        <div className="room-list">
+
+    <div className = "column-1">
+
+      <div className="room-list">
+
           <section>
-          <h2 className="room-name">{this.props.activeRoom ? this.props.activeRoom.name : 'Please select a chat room to join or Create a new room' }</h2>
-            {this.state.rooms.map((room, index) =>
-              <li
-                key={index}
-                onClick={() => this.props.changeActiveRoom(room)}>
+
+            <p className = "room-name"> {this.props.activeRoom ? this.props.activeRoom.name : 'Join Chat Room' } </p>
+
+              {this.state.rooms.map((room, index) =>
+
+              <li className = "room-list-item" key = {index} onClick = {() => this.props.changeActiveRoom(room)}>
+
                 {room.name}
+
               </li>
-          )}
-          </section>
-          <div id="new-room">
-            <form onSubmit={ (e) => this.handleSubmit(e) }>
+
+               )}
+
+            </section>
+
+
+        <div id = "new-room">
+
+            <form onSubmit = { (e) => this.handleSubmit(e) }>
+
               <label>
-                Create New Chat Room:
-                <input
-                  type="text"
-                  placeholder="enter room name"
-                  value={this.state.newRoomName}
-                  onChange={ (e) => this.handleChange(e) }/>
-              </label>
-              <input type="submit" value="submit" />
+
+                <div id = "create-room"> Create Chat Room </div>
+
+                  <input
+                    type = "text"
+                    placeholder = "Enter room name..."
+                    value = {this.state.newRoomName}
+                    onChange = { (e) => this.handleChange(e) }/>
+
+               </label>
+
+              <div>
+              <input id = "room-button" type = "submit" value = "Create" />
+              </div>
+
             </form>
-          </div>
+
+
         </div>
-      )
+
+      </div>
+
+    </div> 
+
+      );
+
     }
+
   }
 
 export default RoomList;

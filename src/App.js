@@ -13,14 +13,16 @@ var config = {
   storageBucket: "bloc-chat-react-6af02.appspot.com",
   messagingSenderId: "437627547858"
 };
+
 firebase.initializeApp(config);
 
 
 class App extends Component {
+
     constructor(props) {
       super(props);
 
-      this.state={
+      this.state = {
         activeRoom: '',
         activeUser: ''
       }
@@ -35,43 +37,69 @@ class App extends Component {
     }
 
 
-
       setUser(user) {
            this.setState({ activeUser: user })
          }
 
+      passRoomId(roomId) {
+          this.setState({activeRoom: roomId})
+           }
+
+      passUser(username) {
+          this.setState({activeUser: username})
+           }
+
 
     render () {
+
       return (
-        <div className='App'>
-          <header>
-            <h1> Welcome to Bloc Chat </h1>
-          </header>
+
+      <div className ='App'>
+
+          <div className = "title">
+            <header>
+              <h1> Chat Fiction </h1>
+            </header>
+          </div>
+
+
           <main>
-            <section id="sidebar">
+
+            <section id = "sidebar">
               <RoomList
-                firebase={firebase}
-                activeRoom={this.state.activeRoom}
-                changeActiveRoom={this.changeActiveRoom}
+                firebase = {firebase}
+                activeRoom = {this.state.activeRoom}
+                changeActiveRoom = {this.changeActiveRoom}
+                passRoomId = {(roomId) => this.passRoomId(roomId)}
               />
             </section>
-            <section id="main">
+
+            <section id = "message room">
               <MessageList
-                firebase={firebase}
-                activeRoom={this.state.activeRoom}
+                firebase = {firebase}
+                activeRoom = {this.state.activeRoom}
+                user = {this.state.activeUser}
+                setUser = {this.setUser}
               />
             </section>
+
           <section>
-          <User
-            firebase={firebase}
-            setUser={this.setUser}
-            user={this.state.activeUser}
+            <User
+              firebase = {firebase}
+              setUser = {this.setUser}
+              user = {this.state.activeUser}
+              passUser = {(username) => this.passUser(username)}
             />
           </section>
-          </main>
-        </div>
+
+         </main>
+
+      </div>
+
       );
+
     }
+
   }
 
   export default App;

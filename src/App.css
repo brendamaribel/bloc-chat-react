@@ -30,3 +30,125 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+.column-1 {
+ float: left;
+ padding: 10px;
+ height: 600px;
+ width: 25%;
+ box-sizing: border-box;
+ border: solid .5px lightgray;
+ background-color: lightgray
+}
+
+.column-2 {
+ float: left;
+ padding: 10px;
+ height: 600px;
+ width: 75%;
+ box-sizing: border-box;
+ border: solid .5px white;
+}
+
+.heading{
+  border:2px solid black;
+  border-collapse: collapse;
+}
+
+#message-bar{
+
+   position: absolute;
+   top: 660px;
+   right: 5px;
+   width: 74%;
+   padding: 5px;
+   border: solid .5px white;
+   box-sizing: border-box;
+
+}
+
+#message-button{
+  position: absolute;
+  top: 660px;
+  right: 5px;
+  width: 5%;
+  padding: 5px;
+  border: solid .5px gray;
+  box-sizing: border-box;
+  background-color: gray;
+  color: white;
+}
+
+
+.title{
+  background-color: gray;
+  border: solid .5px gray;
+  border-collapse: collapse;
+}
+
+.room-list-item{
+  display: block;
+  text-align: center;
+
+  padding: 5px;
+  text-transform: capitalize;
+  color: rgb(60, 60, 60);
+}
+
+#room-button{
+  border: solid .5px gray;
+  background-color: gray;
+  color: white;
+  padding: 5px;
+
+  margin-top: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 20px;
+
+}
+
+#create-room{
+color: rgb(60, 60, 60);
+font-weight: bold;
+}
+
+.room-name{
+  color: rgb(60, 60, 60);
+  font-weight: bold;
+}
+
+.sign-in{
+  background-color: gray;
+  color: white;
+  border: solid .5px gray;
+  padding: 5px;
+}
+
+.sign-off{
+  background-color: gray;
+  color: white;
+  border: solid .5px gray;
+  padding: 5px;
+}
+
+#username{
+  color: rgb(60, 60, 60);
+}
+
+.message-align{
+  text-align: left;
+  font-weight: bold;
+}
+
+.message-date-align{
+  text-align: right;
+  color: rgb(60, 60, 60);
+}
+
+.message-content-align{
+  text-align: left;
+  color: rgb(60, 60, 60);
+}
